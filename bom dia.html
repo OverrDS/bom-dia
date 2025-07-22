@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>bom dia com carinho 💜</title>
+    <link rel="icon" href="https://emojiapi.dev/api/v1/1f49c/64.png" type="image/png">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(to top left, #f5e6ff, #e6e6ff);
+            color: #4b006e;
+            text-align: center;
+            padding: 40px 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #a64bf4;
+            margin-bottom: 15px;
+            word-break: break-word;
+            z-index: 1;
+            position: relative;
+        }
+
+        .explicacao {
+            font-size: 1.1em;
+            color: #5a3376;
+            margin-bottom: 40px;
+            line-height: 1.5em;
+            z-index: 1;
+            position: relative;
+        }
+
+        button {
+            font-size: 1.5em;
+            padding: 14px 28px;
+            background-color: #a64bf4;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s, background-color 0.3s;
+            max-width: 100%;
+            z-index: 1;
+            position: relative;
+        }
+
+        button:hover {
+            background-color: #9338db;
+            transform: scale(1.05);
+        }
+
+        .assinatura {
+            margin-top: 50px;
+            font-size: 0.95em;
+            color: #888;
+            font-style: italic;
+            z-index: 1;
+            position: relative;
+        }
+
+        .coração {
+            display: inline-block;
+            color: #a64bf4;
+            animation: pulse 1.8s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        @media (max-width: 500px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .explicacao {
+                font-size: 1em;
+            }
+
+            button {
+                font-size: 1.2em;
+                padding: 12px 20px;
+            }
+        }
+
+        .hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .hearts span {
+            position: absolute;
+            font-size: 18px;
+            color: rgba(166, 75, 244, 0.15);
+            animation: float 10s linear infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) translateX(0);
+            }
+
+            100% {
+                transform: translateY(-100vh) translateX(20px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="mensagem">Bom dia 💜</h1>
+
+    <p class="explicacao">
+        para de me manda bom dia seco 😒<br>
+        fiz isso aqui pra c comecar a mandar com mais a:
+    </p>
+
+    <button onclick="adicionarA()">+</button>
+
+    <div class="assinatura">
+        feito com carinho por alguém que gosta muito de você <span class="coração">💜</span>
+    </div>
+
+    <div class="hearts"></div>
+
+    <audio id="clickSound" preload="auto">
+        <source src="pop.mp3" type="audio/mp3">
+    </audio>
+
+
+
+
+    <script>
+        let sufixo = '';
+
+        function adicionarA() {
+            sufixo += 'a';
+            document.getElementById('mensagem').textContent = 'Bom dia' + sufixo + ' 💜';
+            const clickSound = document.getElementById('clickSound');
+            clickSound.currentTime = 0;
+            clickSound.play();
+        }
+
+        for (let i = 0; i < 15; i++) {
+            const span = document.createElement('span');
+            span.textContent = '💜';
+            span.style.left = Math.random() * 100 + 'vw';
+            span.style.animationDuration = (6 + Math.random() * 5) + 's';
+            span.style.fontSize = (12 + Math.random() * 20) + 'px';
+            document.querySelector('.hearts').appendChild(span);
+        }
+    </script>
+</body>
+
+</html>
